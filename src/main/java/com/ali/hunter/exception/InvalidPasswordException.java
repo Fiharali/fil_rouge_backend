@@ -1,4 +1,4 @@
-package com.ali.hunter.exception.exps;
+package com.ali.hunter.exception;
 
 public   class InvalidPasswordException extends RuntimeException {
     public InvalidPasswordException(String message) {

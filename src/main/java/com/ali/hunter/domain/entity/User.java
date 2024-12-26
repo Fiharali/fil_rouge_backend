@@ -46,8 +46,7 @@ public class User  implements UserDetails {
 
     private LocalDateTime licenseExpirationDate;
 
-    @OneToMany(mappedBy = "user")
-    private List<Participation> participations;
+
 
 
     @Override
@@ -55,11 +54,6 @@ public class User  implements UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         authorities.add(new SimpleGrantedAuthority("ROLE_" + role.name()));
-
-        role.getPermissions().stream()
-                .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
-                .forEach(authorities::add);
-
         return authorities;
     }
 

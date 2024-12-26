@@ -1,10 +1,6 @@
-package com.ali.hunter.web.vm.request;
+package com.ali.hunter.web.vm.user;
 
-import com.ali.hunter.domain.entity.Participation;
 import com.ali.hunter.domain.enums.Role;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +8,6 @@ import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Getter

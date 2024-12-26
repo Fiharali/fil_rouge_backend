@@ -1,4 +1,4 @@
-package com.ali.hunter.web.vm.response;
+package com.ali.hunter.web.vm.user;
 
 import com.ali.hunter.domain.enums.Role;
 import lombok.Builder;

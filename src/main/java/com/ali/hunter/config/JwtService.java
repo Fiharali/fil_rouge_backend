@@ -2,7 +2,6 @@ package com.ali.hunter.config;
 
 import com.ali.hunter.domain.entity.User;
 import com.ali.hunter.repository.UserRepository;
-import com.ali.hunter.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

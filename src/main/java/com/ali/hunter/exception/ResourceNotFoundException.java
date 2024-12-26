@@ -1,4 +1,4 @@
-package com.ali.hunter.exception.exps;
+package com.ali.hunter.exception;
 
 public   class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

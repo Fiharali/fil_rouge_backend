@@ -1,4 +1,4 @@
-package com.ali.hunter.exception.exps;
+package com.ali.hunter.exception;
 
 public   class EmailAlreadyExisteException extends RuntimeException {
     public EmailAlreadyExisteException(String message) {
