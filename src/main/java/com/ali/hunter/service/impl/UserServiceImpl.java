@@ -28,9 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> searchUsers(User user, Pageable pageable) {
-        if (user.getFirstName() == null  &&
-                user.getLastName() == null &&
-                user.getCin() == null &&
+        if (user.getCin() == null &&
                 user.getEmail() == null ) {
             return userRepository.findAll(pageable);
         }
@@ -53,9 +51,6 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new EmailAlreadyExisteException("Email already exists");
         }
-
-        user.setJoinDate(LocalDateTime.now());
-        user.setUsername(user.getFirstName()+user.getLastName());
         user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
 
         return userRepository.save(user);
@@ -73,16 +68,11 @@ public class UserServiceImpl implements UserService {
 
         }
 
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setUsername(user.getFirstName()+user.getLastName());
+
         userToUpdate.setCin(user.getCin());
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setPassword(PasswordUtil.hashPassword(user.getPassword()));
-        userToUpdate.setNationality(user.getNationality());
-        userToUpdate.setLicenseExpirationDate(user.getLicenseExpirationDate());
         userToUpdate.setRole(user.getRole());
-
         return userRepository.save(userToUpdate);
 
     }

@@ -1,0 +1,222 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735246350903-1
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_agence
+                  name: id
+                  type: UUID
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_at
+                  type: DATE
+              - column:
+                  name: created_atb
+                  type: DATE
+            tableName: agence
+  - changeSet:
+      id: 1735246350903-2
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_booking
+                  name: id
+                  type: UUID
+              - column:
+                  name: start_date
+                  type: DATE
+              - column:
+                  name: end_date
+                  type: DATE
+              - column:
+                  name: booking_status
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_at
+                  type: DATE
+              - column:
+                  name: created_atb
+                  type: DATE
+              - column:
+                  name: vehicle_id
+                  type: UUID
+              - column:
+                  name: user_id
+                  type: UUID
+            tableName: booking
+  - changeSet:
+      id: 1735246350903-3
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_review
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rating
+                  type: INT
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_at
+                  type: DATE
+              - column:
+                  name: created_atb
+                  type: DATE
+              - column:
+                  name: vehicle_id
+                  type: UUID
+            tableName: review
+  - changeSet:
+      id: 1735246350903-4
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: UUID
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+              - column:
+                  name: cin
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: created_atb
+                  type: DATE
+              - column:
+                  name: deleted_at
+                  type: DATE
+            tableName: user
+  - changeSet:
+      id: 1735246350903-5
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_vehicle
+                  name: id
+                  type: UUID
+              - column:
+                  name: reg_num
+                  type: VARCHAR(255)
+              - column:
+                  name: fuel_type
+                  type: VARCHAR(255)
+              - column:
+                  name: vehicle_type
+                  type: VARCHAR(255)
+              - column:
+                  name: brand
+                  type: VARCHAR(255)
+              - column:
+                  name: model
+                  type: VARCHAR(255)
+              - column:
+                  name: daily_price
+                  type: DOUBLE
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_at
+                  type: DATE
+              - column:
+                  name: created_atb
+                  type: DATE
+              - column:
+                  name: agence_id
+                  type: UUID
+            tableName: vehicle
+  - changeSet:
+      id: 1735246350903-6
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: booking
+            constraintName: FK_BOOKING_ON_USER
+            referencedColumnNames: id
+            referencedTableName: user
+  - changeSet:
+      id: 1735246350903-7
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: vehicle_id
+            baseTableName: booking
+            constraintName: FK_BOOKING_ON_VEHICLE
+            referencedColumnNames: id
+            referencedTableName: vehicle
+  - changeSet:
+      id: 1735246350903-8
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: vehicle_id
+            baseTableName: review
+            constraintName: FK_REVIEW_ON_VEHICLE
+            referencedColumnNames: id
+            referencedTableName: vehicle
+  - changeSet:
+      id: 1735246350903-9
+      author: Youcode
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: agence_id
+            baseTableName: vehicle
+            constraintName: FK_VEHICLE_ON_AGENCE
+            referencedColumnNames: id
+            referencedTableName: agence
+

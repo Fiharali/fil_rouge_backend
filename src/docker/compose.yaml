@@ -10,12 +10,9 @@ services:
       - 'POSTGRES_USER=ali'
     ports:
       - '5433:5432'
-    networks:
-      - samurai-network
 
 
 
-networks:
-  samurai-network:
-    driver: bridge
+
+
 

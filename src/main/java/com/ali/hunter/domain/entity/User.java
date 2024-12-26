@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,28 +26,24 @@ public class User  implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String username;
+    private String name;
 
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String firstName;
-
-    private String lastName;
-
     private String cin;
 
     private String email;
 
-    private String nationality;
+    private LocalDate created_atb = LocalDate.now();
 
-    private LocalDateTime joinDate;
-
-    private LocalDateTime licenseExpirationDate;
+    private LocalDate deleted_at;
 
 
+    @OneToMany(mappedBy = "user")
+    private  List<Booking> bookings;
 
 
     @Override
