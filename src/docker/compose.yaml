@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: fil_rouge
+    image: 'postgres:17'
+    environment:
+      - 'POSTGRES_DB=fil_rouge'
+      - 'POSTGRES_PASSWORD=ali'
+      - 'POSTGRES_USER=ali'
+    ports:
+      - '5433:5432'
+    networks:
+      - samurai-network
+
+
+
+networks:
+  samurai-network:
+    driver: bridge
+

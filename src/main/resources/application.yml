@@ -1,0 +1,29 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+  liquibase:
+    enabled: true
+    change-log: db/changelog/master.yaml
+  docker:
+    compose:
+      file: src/docker/compose.yaml
+      enabled: true
+      lifecycle-management: start_only
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
